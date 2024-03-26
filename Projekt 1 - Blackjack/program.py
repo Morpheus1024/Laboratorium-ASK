@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QMenuBar, QAction
 from random import shuffle
 
 # Klasa reprezentująca kartę
@@ -67,8 +67,32 @@ class BlackjackUI(QMainWindow):
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
-
         self.layout = QVBoxLayout()
+
+        self.menuBar = QMenuBar()
+        self.setMenuBar(self.menuBar)
+        self.gameMenu = self.menuBar.addMenu("Game")
+        self.new_game_action = QAction("New Game", self)
+        self.exit_game_action = QAction("Exit", self)
+        self.help_game_action = QAction("Help", self)
+        self.gameMenu.addAction(self.new_game_action)
+        self.gameMenu.addAction(self.exit_game_action)
+        self.gameMenu.addAction(self.help_game_action)
+
+        self.skinMenu = self.menuBar.addMenu("Skin")
+        self.skin1_action = QAction("Skin 1", self)
+        self.skin2_action = QAction("Skin 2", self)
+        self.skin3_action = QAction("Skin 3", self)
+        self.skinMenu.addAction(self.skin1_action)
+        self.skinMenu.addAction(self.skin2_action)
+        self.skinMenu.addAction(self.skin3_action)
+
+        self.new_game_action.triggered.connect(self.new_game)
+        self.exit_game_action.triggered.connect(self.close)
+        self.help_game_action.triggered.connect(self.help)       #tutaj będzie wyświetlać się help, a w nim przypisanie przycisków klawiatury do akcji np. h to hit, s to stand itd
+        self.skin1_action.triggered.connect(self.relode_skin(1)) #funkcje placeholder
+        self.skin2_action.triggered.connect(self.relode_skin(2)) #funkcje placeholder
+        self.skin3_action.triggered.connect(self.relode_skin(3)) #funkcje placeholder
 
         self.player_label = QLabel()
         self.dealer_label = QLabel()
