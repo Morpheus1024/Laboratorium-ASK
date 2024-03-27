@@ -7,6 +7,7 @@ import sys
 from PyQt5.QtWidgets import QMessageBox, QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QMenuBar, QAction
 from random import shuffle
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
 
 # Klasa reprezentująca kartę
 class Card:
@@ -18,7 +19,7 @@ class Card:
         return f"{self.value} of {self.suit}"
     
     def cardGrafic(self):
-        pass
+        cardGraphics = QPixmap(f'assets/{self.suit}/{self.value}.png')
 
 
 # Klasa reprezentująca talię kart
@@ -136,7 +137,6 @@ class BlackjackUI(QMainWindow):
 
         self.game = BlackjackGame()
         self.new_game()
-
 
     def update_ui(self):
         player_hand_str = ", ".join(str(card) for card in self.game.player_hand)
