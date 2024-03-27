@@ -1,6 +1,12 @@
+# TODO:
+# -[ ] wykorzystanie myszki
+# -[ ] wykorzystanie klawiatury
+# -[ ] wybór skina
+
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QMenuBar, QAction
+from PyQt5.QtWidgets import QMessageBox, QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QMenuBar, QAction
 from random import shuffle
+from PyQt5.QtCore import Qt
 
 # Klasa reprezentująca kartę
 class Card:
@@ -10,6 +16,10 @@ class Card:
 
     def __str__(self):
         return f"{self.value} of {self.suit}"
+    
+    def cardGrafic(self):
+        pass
+
 
 # Klasa reprezentująca talię kart
 class Deck:
@@ -18,7 +28,7 @@ class Deck:
         self.generate_deck()
 
     def generate_deck(self):
-        suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+        suits = ['Kier', 'Karo', 'Trefl', 'Pik']
         values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         self.cards = [Card(suit, value) for suit in suits for value in values]
         shuffle(self.cards)
@@ -63,12 +73,13 @@ class BlackjackUI(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Blackjack")
-        self.setGeometry(100, 100, 400, 300)
+        self.setGeometry(500, 200, 800, 700)
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
         self.layout = QVBoxLayout()
 
+        #dodanie menu do gry i zmiany skinów
         self.menuBar = QMenuBar()
         self.setMenuBar(self.menuBar)
         self.gameMenu = self.menuBar.addMenu("Game")
@@ -80,7 +91,7 @@ class BlackjackUI(QMainWindow):
         self.gameMenu.addAction(self.help_game_action)
 
         self.skinMenu = self.menuBar.addMenu("Skin")
-        self.skin1_action = QAction("Skin 1", self)
+        self.skin1_action = QAction("Skself.card_field = QLabel()in 1", self)
         self.skin2_action = QAction("Skin 2", self)
         self.skin3_action = QAction("Skin 3", self)
         self.skinMenu.addAction(self.skin1_action)
@@ -89,34 +100,43 @@ class BlackjackUI(QMainWindow):
 
         self.new_game_action.triggered.connect(self.new_game)
         self.exit_game_action.triggered.connect(self.close)
-        self.help_game_action.triggered.connect(self.help)       #tutaj będzie wyświetlać się help, a w nim przypisanie przycisków klawiatury do akcji np. h to hit, s to stand itd
-        self.skin1_action.triggered.connect(self.relode_skin(1)) #funkcje placeholder
-        self.skin2_action.triggered.connect(self.relode_skin(2)) #funkcje placeholder
-        self.skin3_action.triggered.connect(self.relode_skin(3)) #funkcje placeholder
+        self.help_game_action.triggered.connect(self.help_window)
+        self.skin1_action.triggered.connect(self.relode_skin, 1) #funkcje placeholder
+        self.skin2_action.triggered.connect(self.relode_skin, 2) #funkcje placeholder
+        self.skin3_action.triggered.connect(self.relode_skin, 3) #funkcje placeholder
 
+        #labele
         self.player_label = QLabel()
         self.dealer_label = QLabel()
         self.status_label = QLabel()
 
+        #card grafic field
+        # card graphic field
+        self.card_graphics_field = QLabel()
+        self.layout.addWidget(self.card_graphics_field)
+
+        
+
+
+        #przyciski
         self.hit_button = QPushButton("Hit")
         self.stand_button = QPushButton("Stand")
-        self.new_game_button = QPushButton("New Game")
-
         self.hit_button.clicked.connect(self.hit)
         self.stand_button.clicked.connect(self.stand)
-        self.new_game_button.clicked.connect(self.new_game)
 
-        self.layout.addWidget(self.player_label)
+
+        # umiejscowienie elementów w oknie
         self.layout.addWidget(self.dealer_label)
         self.layout.addWidget(self.status_label)
+        self.layout.addWidget(self.player_label, alignment=Qt.AlignBottom | Qt.AlignLeft)
         self.layout.addWidget(self.hit_button)
         self.layout.addWidget(self.stand_button)
-        self.layout.addWidget(self.new_game_button)
 
         self.central_widget.setLayout(self.layout)
 
         self.game = BlackjackGame()
         self.new_game()
+
 
     def update_ui(self):
         player_hand_str = ", ".join(str(card) for card in self.game.player_hand)
@@ -149,6 +169,15 @@ class BlackjackUI(QMainWindow):
     def new_game(self):
         self.game.start_game()
         self.update_ui()
+    
+    def help_window(self):
+        self.help_dialog = QMessageBox()
+        self.help_dialog.setWindowTitle("Help")
+        self.help_dialog.setText("Key Bindings:\nh - Hit\ns - Stand")
+        self.help_dialog.exec_()
+    
+    def relode_skin(self, skin):
+        pass
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
