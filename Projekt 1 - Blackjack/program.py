@@ -155,6 +155,7 @@ class BlackjackUI(QMainWindow):
     def update_ui(self):
         player_hand_str = ", ".join(str(card) for card in self.game.player_hand)
         dealer_hand_str = ", ".join(str(card) for card in self.game.dealer_hand[:-1]) + ", [Hidden Card]"
+        
         self.player_label.setText(f"Player's Hand: {player_hand_str}")
         self.dealer_label.setText(f"Dealer's Hand: {dealer_hand_str}")
         self.status_label.setText("")
