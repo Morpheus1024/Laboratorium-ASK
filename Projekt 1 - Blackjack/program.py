@@ -8,23 +8,29 @@ from PyQt5.QtWidgets import QMessageBox, QApplication, QMainWindow, QLabel, QPus
 from random import shuffle
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QHBoxLayout
 
 # Klasa reprezentująca kartę
 class Card:
     def __init__(self, suit, value):
         self.suit = suit
         self.value = value
+        self.is_hidden = False
 
     def __str__(self):
         return f"{self.value} of {self.suit}"
     
     def cardGrafic(self):
-        cardGraphics = QPixmap(f'assets/{self.suit}/{self.value}.png')
+        if self.is_hidden:
+            self.cardGraphics = QPixmap(f'assets/{self.skin}/{self.suit}/{self.value}.png')
+        else:
+            self.cardGraphics = QPixmap(f'assets/{self.skin}hidden.png')
 
 
 # Klasa reprezentująca talię kart
 class Deck:
     def __init__(self):
+        self.skin = 1
         self.cards = []
         self.generate_deck()
 
@@ -48,9 +54,15 @@ class BlackjackGame:
         self.deck = Deck()
         self.player_hand = [self.deck.draw_card(), self.deck.draw_card()]
         self.dealer_hand = [self.deck.draw_card(), self.deck.draw_card()]
+        
 
     def hit(self, hand):
         hand.append(self.deck.draw_card())
+        
+        card_label = QLabel()
+        pixmap = QPixmap(f'assets/{hand[-1].suit}/{hand[-1].value}.png')
+        card_label.setPixmap(pixmap)
+        window.player_field.addWidget(card_label)
 
     def calculate_hand_value(self, hand):
         total_value = 0
@@ -78,7 +90,7 @@ class BlackjackUI(QMainWindow):
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
-        self.layout = QVBoxLayout()
+        self.layout = QVBoxLayout(self.central_widget)
 
         #dodanie menu do gry i zmiany skinów
         self.menuBar = QMenuBar()
@@ -92,7 +104,7 @@ class BlackjackUI(QMainWindow):
         self.gameMenu.addAction(self.help_game_action)
 
         self.skinMenu = self.menuBar.addMenu("Skin")
-        self.skin1_action = QAction("Skself.card_field = QLabel()in 1", self)
+        self.skin1_action = QAction("Skin 1", self)
         self.skin2_action = QAction("Skin 2", self)
         self.skin3_action = QAction("Skin 3", self)
         self.skinMenu.addAction(self.skin1_action)
@@ -111,13 +123,13 @@ class BlackjackUI(QMainWindow):
         self.dealer_label = QLabel()
         self.status_label = QLabel()
 
+        #cards field - tutaj dodajemy karty
+        self.dealer_field = QHBoxLayout()
+        self.player_field = QHBoxLayout()
+
         #card grafic field
-        # card graphic field
         self.card_graphics_field = QLabel()
         self.layout.addWidget(self.card_graphics_field)
-
-        
-
 
         #przyciski
         self.hit_button = QPushButton("Hit")
@@ -128,7 +140,9 @@ class BlackjackUI(QMainWindow):
 
         # umiejscowienie elementów w oknie
         self.layout.addWidget(self.dealer_label)
+        self.layout.addLayout(self.dealer_field)
         self.layout.addWidget(self.status_label)
+        self.layout.addLayout(self.player_field)
         self.layout.addWidget(self.player_label, alignment=Qt.AlignBottom | Qt.AlignLeft)
         self.layout.addWidget(self.hit_button)
         self.layout.addWidget(self.stand_button)
@@ -177,6 +191,7 @@ class BlackjackUI(QMainWindow):
         self.help_dialog.exec_()
     
     def relode_skin(self, skin):
+        self.game.deck.skin =skin
         pass
 
 if __name__ == "__main__":
