@@ -8,7 +8,11 @@ namespace Black_Jack
         {
             InitializeComponent();
             curretSkin = 0;
-            talia = new Karta[52];
+            talia = new List<Karta>();
+            stos = new Stack<Karta>();
+            karty_playera = new List<Karta>();
+            karty_dealera = new List<Karta>();
+            talia =new List<Karta>();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,6 +35,81 @@ namespace Black_Jack
 
         }
 
+        public void Shuffle()
+        {
+            
+            Random rnd = new Random();
+            Int16 kolor = 0;
+            //generowanie talii
+            for (int i = 0; i < 52; i++)
+            {
+                this.talia.Add(new Karta());
+                this.talia[i].wartosc = (i % 13) + 1;
+
+                if (i % 13 == 0 && i != 0) kolor++;
+                this.talia[i].kolor = kolor;
+                // AS = 1
+                // 2-10 = 2-10
+                //alet = 11
+                //dama = 12
+                //kr�l = 13
+            }
+
+            //tasowanie kart
+            for (int i = 0; i < 52; i++)
+            {
+                int r = rnd.Next(52);
+                Karta temp = this.talia[i];
+                this.talia[i] = this.talia[r];
+                this.talia[r] = temp;
+            }
+            //dodanie kart na stos
+            for (int i = 0; i < 52; i++)
+            {
+                this.stos.Push(this.talia[i]);
+            }
+
+        }
+        private void AddCardToPlayer(int ilosc, ref List<Karta> reka_gracza,Stack<Karta> stos)
+        {
+            for (int i = 0; i < ilosc; i++)
+            {
+                Karta karta = this.stos.Pop();
+                reka_gracza.Add(karta);
+            }
+        }
+
+        private void WriteScoreToLabel(List<Karta> reka_gracza, bool zerowanie)
+        {
+            int suma_A11 = 0; //Asa liczymy jako 11
+            int suma_A1 = 0; //Asa liczymy jako 1
+            if (zerowanie)
+            {
+                suma_A11 = 0;
+                suma_A1 = 0;
+            }
+            
+            foreach (Karta karta in reka_gracza)
+            {
+                if (karta.wartosc == 1)
+                {
+                    suma_A11 += 11;
+                    suma_A1 += 1;
+                }
+                else if (karta.wartosc >= 10)
+                {
+                    suma_A11 += 10;
+                    suma_A1 += 10;
+                }
+                else
+                {
+                    suma_A11+= karta.wartosc;
+                    suma_A1 += karta.wartosc;
+                }
+            }   
+            score.Text = ("Punkty - Duży AS:" + suma_A11 + ", Mały AS:"+ suma_A1);
+        }   
+
         private void nowaGraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //rest grafiki
@@ -49,7 +128,7 @@ namespace Black_Jack
             player_6.Image = null;
 
             //tasowanie kart
-            Shuffle(talia);
+            Shuffle();
 
             //reset labelu ze scorem
             score.Text = ("Punkty:");
@@ -58,10 +137,9 @@ namespace Black_Jack
             curretSkin = 0;
 
             //�adowanie kart
-            LoadCards(curretSkin, 2, 2);
+            LoadCardsOnScreen(curretSkin, 2, 2);
 
-            
-
+            WriteScoreToLabel(karty_playera, true);
 
         }
 
@@ -70,72 +148,108 @@ namespace Black_Jack
 
         }
 
-        private void LoadCards(int skin, int liczbna_kart_gracz, int liczba_kart_dealera)
+        private void LoadCardsOnScreen(int skin, int liczbna_kart_gracz, int liczba_kart_dealera)
         {   
-            this.kart
             //karty dealear:
-            dealer_1.Image = Image.FromFile("skins/" + skin + "/hidden.png");
+            AddCardToPlayer(liczba_kart_dealera, ref karty_dealera, stos);
+            skin = skin + 1;
             for(int i = 1; i <= liczba_kart_dealera; i++)
             {
-             //   tabulacja upa dupa
+                if (i == 1)
+                {
+                    dealer_1.Image = Image.FromFile("assets/" + skin + "/hidden.png");
+                    continue;
+                }
+                int kolor_karty = karty_dealera[i - 1].kolor;
+                string kolor="";
+                switch (kolor_karty)
+                {
+                    case 0:
+                        kolor = "karo";
+                        break;
+                    case 1:
+                        kolor = "kier";
+                        break;
+                    case 2:
+                        kolor = "pik";
+                        break;
+                    case 3:
+                        kolor = "trefl";
+                        break;
+                }
+
+                int wartosc_karty = karty_dealera[i - 1].wartosc;
+                string wartosc = "";
+                switch (wartosc_karty)
+                {
+                    case 1:
+                        wartosc = "A";
+                        break;
+                    case 11:
+                        wartosc = "J";
+                        break;
+                    case 12:
+                        wartosc = "Q";
+                        break;
+                    case 13:
+                        wartosc = "K";
+                        break;
+                    default:
+                        wartosc = wartosc_karty.ToString();
+                        break;
+                }
+                PictureBox pb = (PictureBox)this.Controls.Find("dealer_" + i, true)[0];
+                pb.Image = Image.FromFile("assets/" + skin + "/"+ kolor +"/"+wartosc+".png");
             }
+
 
             //karty gracza
-
+            AddCardToPlayer(liczbna_kart_gracz, ref karty_playera, stos);
             for(int i = 0; i<+liczbna_kart_gracz; i++)
             {
+                int kolor_karty = karty_dealera[i].kolor;
+                string kolor = "";
+                switch (kolor_karty)
+                {
+                    case 0:
+                        kolor = "karo";
+                        break;
+                    case 1:
+                        kolor = "kier";
+                        break;
+                    case 2:
+                        kolor = "pik";
+                        break;
+                    case 3:
+                        kolor = "trefl";
+                        break;
+                }
+
+                int wartosc_karty = karty_dealera[i].wartosc;
+                string wartosc = "";
+                switch (wartosc_karty)
+                {
+                    case 1:
+                        wartosc = "A";
+                        break;
+                    case 11:
+                        wartosc = "J";
+                        break;
+                    case 12:
+                        wartosc = "Q";
+                        break;
+                    case 13:
+                        wartosc = "K";
+                        break;
+                    default:
+                        wartosc = wartosc_karty.ToString();
+                        break;
+                }
                 PictureBox pb = (PictureBox)this.Controls.Find("player_" + (i + 1), true)[0];
-                pb.Image = Image.FromFile("skins/" + skin + "/jakies.png");
+                pb.Image = Image.FromFile("assets/" + skin + "/" + kolor + "/" + wartosc + ".png");
             }
 
-        }
-
-        //private void Shuffle(Karta[] talia)
-        //{
-        //    //tasowanie kart
-        //    Random rnd = new Random();
-
-        //    //przypisanie warto�ci i koloru do talii
-        //    for(int i = 0; i < 13; i++)
-        //    {
-        //        for(int kolor = 0; kolor<4; kolor++)
-        //        {
-        //            talia[i].kolor = kolor;
-        //            talia[i].wartosc = (i%13)+1;
-        //            // AS = 1
-        //            // 2-10 = 2-10
-        //            // walet = 11
-        //            // dama = 12
-        //            // kr�l = 13
-        //        }
-        //    }
-        //    for (int i = 0; i < 52; i++)
-        //    {
-        //        int r = rnd.Next(52);
-        //        Karta temp = talia[i];
-        //        talia[i] = talia[r];
-        //        talia[r] = temp;
-        //    }
-
-        //}   
-        public void Shuffle()
-        {
-            this.talia = new Karta[52];
-            Random rnd = new Random();
-            unsigned int kolor = 0;
-            for (int i = 0; i < 52; i++)
-            {
-                this.talia[i].wartosc = i % 13;
-                if (i % 13 == 0 && i != 0) kolor++;
-                this.talia[i].kolor = kolor;
-                // AS = 1
-                // 2-10 = 2-10
-                //alet = 11
-                //dama = 12
-                //kr�l = 13
-            }
-        }
-
+        }  
 
     }
 }

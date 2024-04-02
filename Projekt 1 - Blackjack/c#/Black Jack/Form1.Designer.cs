@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Numerics;
 
 namespace Black_Jack
 {
@@ -9,14 +10,16 @@ namespace Black_Jack
         public int curretSkin;
         public int liczab_kart_playera;
         public int liczba_kart_dealera;
-        public int[] karty_playera = new int[6];
-        public int[] karty_dealera = new int[6];
+        public Stack<Karta> stos;
         public class Karta
         {
             public int wartosc;
             public int kolor;
         }
-        public Karta[] talia = new Karta[52];
+        public List<Karta> talia = new List<Karta>();
+        public List<Karta> karty_playera = new List<Karta>();
+        public List<Karta> karty_dealera = new List<Karta>();
+
 
         /// </summary>
         private System.ComponentModel.IContainer components = null;
