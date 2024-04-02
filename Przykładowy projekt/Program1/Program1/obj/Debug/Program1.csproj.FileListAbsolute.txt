@@ -1,0 +1,37 @@
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\bin\Debug\Program1.exe.config
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\bin\Debug\Program1.exe
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\bin\Debug\Program1.pdb
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.csprojAssemblyReference.cache
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.ProgramPierwszy.resources
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.Properties.Resources.resources
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.csproj.GenerateResource.cache
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.csproj.CoreCompileInputs.cache
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.exe
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.pdb
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.NoweOkno.resources
+E:\VStudio2017\Projekt_OSK_PON17\Program1\Program1\obj\Debug\Program1.OknoInfo.resources
+E:\Visual Studio 2019\Program1\Program1\bin\Debug\Program1.exe.config
+E:\Visual Studio 2019\Program1\Program1\bin\Debug\Program1.exe
+E:\Visual Studio 2019\Program1\Program1\bin\Debug\Program1.pdb
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.csprojAssemblyReference.cache
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.ProgramPierwszy.resources
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.NoweOkno.resources
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.OknoInfo.resources
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.Properties.Resources.resources
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.csproj.GenerateResource.cache
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.csproj.CoreCompileInputs.cache
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.exe
+E:\Visual Studio 2019\Program1\Program1\obj\Debug\Program1.pdb
+D:\Program1\Program1\obj\Debug\Program1.csproj.AssemblyReference.cache
+D:\Program1\Program1\obj\Debug\Program1.exe
+D:\Program1\Program1\obj\Debug\Program1.pdb
+D:\Program1\Program1\bin\Debug\Program1.exe.config
+D:\Program1\Program1\bin\Debug\Program1.exe
+D:\Program1\Program1\bin\Debug\Program1.pdb
+D:\Program1\Program1\obj\Debug\Program1.csproj.CoreCompileInputs.cache
+D:\Program1\Program1\obj\Debug\Program1.ProgramPierwszy.resources
+D:\Program1\Program1\obj\Debug\Program1.NoweOkno.resources
+D:\Program1\Program1\obj\Debug\Program1.OknoInfo.resources
+D:\Program1\Program1\obj\Debug\Program1.Properties.Resources.resources
+D:\Program1\Program1\obj\Debug\Program1.csproj.GenerateResource.cache
+D:\Program1\Program1\obj\Debug\Program1.Form4.resources
