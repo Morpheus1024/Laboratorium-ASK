@@ -54,10 +54,10 @@ namespace Black_Jack
             //reset labelu ze scorem
             score.Text = ("Punkty:");
 
-            //reset skinów
+            //reset skinï¿½w
             curretSkin = 0;
 
-            //³adowanie kart
+            //ï¿½adowanie kart
             LoadCards(curretSkin, 2, 2);
 
             
@@ -95,7 +95,7 @@ namespace Black_Jack
         //    //tasowanie kart
         //    Random rnd = new Random();
 
-        //    //przypisanie wartoœci i koloru do talii
+        //    //przypisanie wartoï¿½ci i koloru do talii
         //    for(int i = 0; i < 13; i++)
         //    {
         //        for(int kolor = 0; kolor<4; kolor++)
@@ -106,7 +106,7 @@ namespace Black_Jack
         //            // 2-10 = 2-10
         //            // walet = 11
         //            // dama = 12
-        //            // król = 13
+        //            // krï¿½l = 13
         //        }
         //    }
         //    for (int i = 0; i < 52; i++)
@@ -122,15 +122,17 @@ namespace Black_Jack
         {
             this.talia = new Karta[52];
             Random rnd = new Random();
+            unsigned int kolor = 0;
             for (int i = 0; i < 52; i++)
             {
-                this.talia[i].wartosc = i % 4+1;
-                this.talia[i].kolor = i % 13;
+                this.talia[i].wartosc = i % 13;
+                if (i % 13 == 0 && i != 0) kolor++;
+                this.talia[i].kolor = kolor;
                 // AS = 1
-                //            // 2-10 = 2-10
-                //            // walet = 11
-                //            // dama = 12
-                //            // król = 13
+                // 2-10 = 2-10
+                //alet = 11
+                //dama = 12
+                //krï¿½l = 13
             }
         }
 
