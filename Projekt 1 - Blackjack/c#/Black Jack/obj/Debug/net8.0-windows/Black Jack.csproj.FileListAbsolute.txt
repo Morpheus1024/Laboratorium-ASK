@@ -1,0 +1,17 @@
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\bin\Debug\net8.0-windows\Black Jack.exe
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\bin\Debug\net8.0-windows\Black Jack.deps.json
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\bin\Debug\net8.0-windows\Black Jack.runtimeconfig.json
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\bin\Debug\net8.0-windows\Black Jack.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\bin\Debug\net8.0-windows\Black Jack.pdb
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black_Jack.Form1.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.csproj.GenerateResource.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.AssemblyInfoInputs.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.AssemblyInfo.cs
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.csproj.CoreCompileInputs.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.sourcelink.json
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\refint\Black Jack.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.pdb
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\Black Jack.genruntimeconfig.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 1 - Blackjack\c#\Black Jack\obj\Debug\net8.0-windows\ref\Black Jack.dll
