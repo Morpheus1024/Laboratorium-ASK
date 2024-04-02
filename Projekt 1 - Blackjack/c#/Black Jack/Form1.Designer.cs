@@ -1,10 +1,23 @@
-﻿namespace Black_Jack
+﻿using System.Numerics;
+
+namespace Black_Jack
 {
     partial class Form1
     {
         /// <summary>
         ///  Required designer variable.
         public int curretSkin;
+        public int liczab_kart_playera;
+        public int liczba_kart_dealera;
+        public int[] karty_playera = new int[6];
+        public int[] karty_dealera = new int[6];
+        public class Karta
+        {
+            public int wartosc;
+            public int kolor;
+        }
+        public Karta[] talia = new Karta[52];
+
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
