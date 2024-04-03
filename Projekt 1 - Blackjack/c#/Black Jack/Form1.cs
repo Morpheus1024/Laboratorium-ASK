@@ -1,4 +1,6 @@
+using System.Drawing;
 using System.Numerics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Black_Jack
 {
@@ -70,13 +72,14 @@ namespace Black_Jack
             }
 
         }
-        private void AddCardToPlayer(int ilosc, ref List<Karta> reka_gracza,Stack<Karta> stos)
+        private List<Karta> AddCardToPlayer(int ilosc, ref List<Karta> reka_gracza)
         {
             for (int i = 0; i < ilosc; i++)
             {
                 Karta karta = this.stos.Pop();
                 reka_gracza.Add(karta);
             }
+            return reka_gracza;
         }
 
         private void WriteScoreToLabel(List<Karta> reka_gracza, bool zerowanie)
@@ -131,13 +134,13 @@ namespace Black_Jack
             Shuffle();
 
             //reset labelu ze scorem
-            score.Text = ("Punkty:");
+            this.score.Text = ("Punkty:");
 
             //reset skin�w
-            curretSkin = 0;
+            this.curretSkin = 0;
 
             //�adowanie kart
-            LoadCardsOnScreen(curretSkin, 2, 2);
+            LoadCardsOnScreen(this.curretSkin, 2, 2);
 
             WriteScoreToLabel(karty_playera, true);
 
@@ -145,13 +148,58 @@ namespace Black_Jack
 
         private void Hit_Button_Click(object sender, EventArgs e)
         {
+            int ilosc_kart = 0;
+            this.karty_playera = AddCardToPlayer(1, ref karty_playera);
+            ilosc_kart = this.karty_playera.Count;
 
+            int kolor_karty = karty_playera[ilosc_kart - 1].kolor;
+            string kolor = "";
+            switch (kolor_karty)
+            {
+                case 0:
+                    kolor = "karo";
+                    break;
+                case 1:
+                    kolor = "kier";
+                    break;
+                case 2:
+                    kolor = "pik";
+                    break;
+                case 3:
+                    kolor = "trefl";
+                    break;
+            }
+            int wartosc_karty = karty_playera[ilosc_kart - 1].wartosc;
+            string wartosc = "";
+            switch (wartosc_karty)
+            {
+                case 1:
+                    wartosc = "A";
+                    break;
+                case 11:
+                    wartosc = "J";
+                    break;
+                case 12:
+                    wartosc = "Q";
+                    break;
+                case 13:
+                    wartosc = "K";
+                    break;
+                default:
+                    wartosc = wartosc_karty.ToString();
+                    break;
+            }
+
+
+
+            PictureBox pb = (PictureBox)this.Controls.Find("player_" + ilosc_kart, true)[0];
+            pb.Image = Image.FromFile("assets/" + (this.curretSkin+1) + "/" + kolor + "/" + wartosc + ".png");
         }
 
         private void LoadCardsOnScreen(int skin, int liczbna_kart_gracz, int liczba_kart_dealera)
-        {   
+        {
             //karty dealear:
-            AddCardToPlayer(liczba_kart_dealera, ref karty_dealera, stos);
+            this.karty_dealera = AddCardToPlayer(liczba_kart_dealera, ref karty_dealera);
             skin = skin + 1;
             for(int i = 1; i <= liczba_kart_dealera; i++)
             {
@@ -204,7 +252,7 @@ namespace Black_Jack
 
 
             //karty gracza
-            AddCardToPlayer(liczbna_kart_gracz, ref karty_playera, stos);
+            this.karty_playera = AddCardToPlayer(liczbna_kart_gracz, ref karty_playera);
             for(int i = 0; i<+liczbna_kart_gracz; i++)
             {
                 int kolor_karty = karty_dealera[i].kolor;
