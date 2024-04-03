@@ -7,15 +7,18 @@ namespace Black_Jack
     {
         /// <summary>
         ///  Required designer variable.
-        public int curretSkin;
-        public int liczab_kart_playera;
-        public int liczba_kart_dealera;
-        public Stack<Karta> stos;
+        ///  
         public class Karta
         {
             public int wartosc;
             public int kolor;
         }
+
+        public int curretSkin;
+        public int liczab_kart_playera;
+        public int liczba_kart_dealera;
+        public LinkedList<Karta> stos;
+
         public List<Karta> talia = new List<Karta>();
         public List<Karta> karty_playera = new List<Karta>();
         public List<Karta> karty_dealera = new List<Karta>();
@@ -148,21 +151,22 @@ namespace Black_Jack
             // nowaGraToolStripMenuItem
             // 
             nowaGraToolStripMenuItem.Name = "nowaGraToolStripMenuItem";
-            nowaGraToolStripMenuItem.Size = new Size(150, 22);
+            nowaGraToolStripMenuItem.Size = new Size(180, 22);
             nowaGraToolStripMenuItem.Text = "Nowa gra";
             nowaGraToolStripMenuItem.Click += nowaGraToolStripMenuItem_Click;
             // 
             // wyjdźZGryToolStripMenuItem
             // 
             wyjdźZGryToolStripMenuItem.Name = "wyjdźZGryToolStripMenuItem";
-            wyjdźZGryToolStripMenuItem.Size = new Size(150, 22);
+            wyjdźZGryToolStripMenuItem.Size = new Size(180, 22);
             wyjdźZGryToolStripMenuItem.Text = "Wyjdź z gry";
             // 
             // oknoPomocyToolStripMenuItem
             // 
             oknoPomocyToolStripMenuItem.Name = "oknoPomocyToolStripMenuItem";
-            oknoPomocyToolStripMenuItem.Size = new Size(150, 22);
+            oknoPomocyToolStripMenuItem.Size = new Size(180, 22);
             oknoPomocyToolStripMenuItem.Text = "Okno pomocy";
+            oknoPomocyToolStripMenuItem.Click += oknoPomocyToolStripMenuItem_Click;
             // 
             // grafikaToolStripMenuItem
             // 
