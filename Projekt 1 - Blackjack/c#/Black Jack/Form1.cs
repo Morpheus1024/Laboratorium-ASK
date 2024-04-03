@@ -152,48 +152,56 @@ namespace Black_Jack
             this.karty_playera = AddCardToPlayer(1, ref karty_playera);
             ilosc_kart = this.karty_playera.Count;
 
-            int kolor_karty = karty_playera[ilosc_kart - 1].kolor;
-            string kolor = "";
-            switch (kolor_karty)
+            if (ilosc_kart > 6)
             {
-                case 0:
-                    kolor = "karo";
-                    break;
-                case 1:
-                    kolor = "kier";
-                    break;
-                case 2:
-                    kolor = "pik";
-                    break;
-                case 3:
-                    kolor = "trefl";
-                    break;
+                MessageBox.Show("Nie możesz mieć więcej niż 6 kart");
+                return;
             }
-            int wartosc_karty = karty_playera[ilosc_kart - 1].wartosc;
-            string wartosc = "";
-            switch (wartosc_karty)
+            else
             {
-                case 1:
-                    wartosc = "A";
-                    break;
-                case 11:
-                    wartosc = "J";
-                    break;
-                case 12:
-                    wartosc = "Q";
-                    break;
-                case 13:
-                    wartosc = "K";
-                    break;
-                default:
-                    wartosc = wartosc_karty.ToString();
-                    break;
+                int kolor_karty = karty_playera[ilosc_kart - 1].kolor;
+                string kolor = "";
+                switch (kolor_karty)
+                {
+                    case 0:
+                        kolor = "karo";
+                        break;
+                    case 1:
+                        kolor = "kier";
+                        break;
+                    case 2:
+                        kolor = "pik";
+                        break;
+                    case 3:
+                        kolor = "trefl";
+                        break;
+                }
+                int wartosc_karty = karty_playera[ilosc_kart - 1].wartosc;
+                string wartosc = "";
+                switch (wartosc_karty)
+                {
+                    case 1:
+                        wartosc = "A";
+                        break;
+                    case 11:
+                        wartosc = "J";
+                        break;
+                    case 12:
+                        wartosc = "Q";
+                        break;
+                    case 13:
+                        wartosc = "K";
+                        break;
+                    default:
+                        wartosc = wartosc_karty.ToString();
+                        break;
+                }
+
+                PictureBox pb = (PictureBox)this.Controls.Find("player_" + ilosc_kart, true)[0];
+                pb.Image = Image.FromFile("assets/" + (this.curretSkin + 1) + "/" + kolor + "/" + wartosc + ".png");
             }
 
-
-
-            PictureBox pb = (PictureBox)this.Controls.Find("player_" + ilosc_kart, true)[0];
-            pb.Image = Image.FromFile("assets/" + (this.curretSkin+1) + "/" + kolor + "/" + wartosc + ".png");
+           
         }
 
         private void LoadCardsOnScreen(int skin, int liczbna_kart_gracz, int liczba_kart_dealera)
