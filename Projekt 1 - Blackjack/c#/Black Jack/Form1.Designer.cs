@@ -107,6 +107,7 @@ namespace Black_Jack
             Stand_Button.TabIndex = 1;
             Stand_Button.Text = "Stand";
             Stand_Button.UseVisualStyleBackColor = true;
+            Stand_Button.Click += Stand_Button_Click;
             // 
             // dealer_1
             // 
@@ -151,20 +152,20 @@ namespace Black_Jack
             // nowaGraToolStripMenuItem
             // 
             nowaGraToolStripMenuItem.Name = "nowaGraToolStripMenuItem";
-            nowaGraToolStripMenuItem.Size = new Size(180, 22);
+            nowaGraToolStripMenuItem.Size = new Size(150, 22);
             nowaGraToolStripMenuItem.Text = "Nowa gra";
             nowaGraToolStripMenuItem.Click += nowaGraToolStripMenuItem_Click;
             // 
             // wyjdźZGryToolStripMenuItem
             // 
             wyjdźZGryToolStripMenuItem.Name = "wyjdźZGryToolStripMenuItem";
-            wyjdźZGryToolStripMenuItem.Size = new Size(180, 22);
+            wyjdźZGryToolStripMenuItem.Size = new Size(150, 22);
             wyjdźZGryToolStripMenuItem.Text = "Wyjdź z gry";
             // 
             // oknoPomocyToolStripMenuItem
             // 
             oknoPomocyToolStripMenuItem.Name = "oknoPomocyToolStripMenuItem";
-            oknoPomocyToolStripMenuItem.Size = new Size(180, 22);
+            oknoPomocyToolStripMenuItem.Size = new Size(150, 22);
             oknoPomocyToolStripMenuItem.Text = "Okno pomocy";
             oknoPomocyToolStripMenuItem.Click += oknoPomocyToolStripMenuItem_Click;
             // 
