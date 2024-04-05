@@ -66,10 +66,6 @@ namespace Black_Jack
             player_5 = new PictureBox();
             player_6 = new PictureBox();
             dealer_2 = new PictureBox();
-            dealer_3 = new PictureBox();
-            dealer_4 = new PictureBox();
-            dealer_5 = new PictureBox();
-            dealer_6 = new PictureBox();
             score = new Label();
             ((System.ComponentModel.ISupportInitialize)dealer_1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)player_1).BeginInit();
@@ -80,10 +76,6 @@ namespace Black_Jack
             ((System.ComponentModel.ISupportInitialize)player_5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)player_6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dealer_2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_6).BeginInit();
             SuspendLayout();
             // 
             // Hit_Button
@@ -201,7 +193,6 @@ namespace Black_Jack
             player_3.Size = new Size(154, 231);
             player_3.TabIndex = 7;
             player_3.TabStop = false;
-            player_3.Click += player_3_Click;
             // 
             // player_4
             // 
@@ -235,38 +226,6 @@ namespace Black_Jack
             dealer_2.TabIndex = 11;
             dealer_2.TabStop = false;
             // 
-            // dealer_3
-            // 
-            dealer_3.Location = new Point(332, 27);
-            dealer_3.Name = "dealer_3";
-            dealer_3.Size = new Size(154, 231);
-            dealer_3.TabIndex = 12;
-            dealer_3.TabStop = false;
-            // 
-            // dealer_4
-            // 
-            dealer_4.Location = new Point(492, 27);
-            dealer_4.Name = "dealer_4";
-            dealer_4.Size = new Size(154, 231);
-            dealer_4.TabIndex = 13;
-            dealer_4.TabStop = false;
-            // 
-            // dealer_5
-            // 
-            dealer_5.Location = new Point(652, 26);
-            dealer_5.Name = "dealer_5";
-            dealer_5.Size = new Size(154, 231);
-            dealer_5.TabIndex = 14;
-            dealer_5.TabStop = false;
-            // 
-            // dealer_6
-            // 
-            dealer_6.Location = new Point(812, 26);
-            dealer_6.Name = "dealer_6";
-            dealer_6.Size = new Size(154, 231);
-            dealer_6.TabIndex = 15;
-            dealer_6.TabStop = false;
-            // 
             // score
             // 
             score.AutoSize = true;
@@ -282,10 +241,6 @@ namespace Black_Jack
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(983, 537);
             Controls.Add(score);
-            Controls.Add(dealer_6);
-            Controls.Add(dealer_5);
-            Controls.Add(dealer_4);
-            Controls.Add(dealer_3);
             Controls.Add(dealer_2);
             Controls.Add(player_6);
             Controls.Add(player_5);
@@ -310,10 +265,6 @@ namespace Black_Jack
             ((System.ComponentModel.ISupportInitialize)player_5).EndInit();
             ((System.ComponentModel.ISupportInitialize)player_6).EndInit();
             ((System.ComponentModel.ISupportInitialize)dealer_2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dealer_6).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -342,10 +293,6 @@ namespace Black_Jack
         private PictureBox player_5;
         private PictureBox player_6;
         private PictureBox dealer_2;
-        private PictureBox dealer_3;
-        private PictureBox dealer_4;
-        private PictureBox dealer_5;
-        private PictureBox dealer_6;
         private Label score;
     }
 }
