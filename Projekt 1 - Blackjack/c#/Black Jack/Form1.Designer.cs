@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace Black_Jack
 {
@@ -15,13 +16,11 @@ namespace Black_Jack
         }
 
         public int curretSkin;
-        public int liczab_kart_playera;
-        public int liczba_kart_dealera;
-        public LinkedList<Karta> stos;
 
         public List<Karta> talia = new List<Karta>();
         public List<Karta> karty_playera = new List<Karta>();
         public List<Karta> karty_dealera = new List<Karta>();
+        public bool koniec_gry;
 
 
         /// </summary>
@@ -52,7 +51,6 @@ namespace Black_Jack
             Stand_Button = new Button();
             dealer_1 = new PictureBox();
             player_1 = new PictureBox();
-            card_stack = new PictureBox();
             menuStrip1 = new MenuStrip();
             graToolStripMenuItem = new ToolStripMenuItem();
             nowaGraToolStripMenuItem = new ToolStripMenuItem();
@@ -75,7 +73,6 @@ namespace Black_Jack
             score = new Label();
             ((System.ComponentModel.ISupportInitialize)dealer_1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)player_1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)card_stack).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)player_2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)player_3).BeginInit();
@@ -113,7 +110,7 @@ namespace Black_Jack
             // 
             dealer_1.Location = new Point(12, 28);
             dealer_1.Name = "dealer_1";
-            dealer_1.Size = new Size(126, 231);
+            dealer_1.Size = new Size(154, 231);
             dealer_1.TabIndex = 2;
             dealer_1.TabStop = false;
             // 
@@ -121,24 +118,16 @@ namespace Black_Jack
             // 
             player_1.Location = new Point(12, 265);
             player_1.Name = "player_1";
-            player_1.Size = new Size(126, 231);
+            player_1.Size = new Size(154, 231);
             player_1.TabIndex = 3;
             player_1.TabStop = false;
-            // 
-            // card_stack
-            // 
-            card_stack.Location = new Point(804, 28);
-            card_stack.Name = "card_stack";
-            card_stack.Size = new Size(245, 468);
-            card_stack.TabIndex = 4;
-            card_stack.TabStop = false;
             // 
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new ToolStripItem[] { graToolStripMenuItem, grafikaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1061, 24);
+            menuStrip1.Size = new Size(983, 24);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -181,96 +170,100 @@ namespace Black_Jack
             skin1ToolStripMenuItem.Name = "skin1ToolStripMenuItem";
             skin1ToolStripMenuItem.Size = new Size(105, 22);
             skin1ToolStripMenuItem.Text = "Skin 1";
+            skin1ToolStripMenuItem.Click += skin1ToolStripMenuItem_Click;
             // 
             // skin2ToolStripMenuItem
             // 
             skin2ToolStripMenuItem.Name = "skin2ToolStripMenuItem";
             skin2ToolStripMenuItem.Size = new Size(105, 22);
             skin2ToolStripMenuItem.Text = "Skin 2";
+            skin2ToolStripMenuItem.Click += skin2ToolStripMenuItem_Click;
             // 
             // skin3ToolStripMenuItem
             // 
             skin3ToolStripMenuItem.Name = "skin3ToolStripMenuItem";
             skin3ToolStripMenuItem.Size = new Size(105, 22);
             skin3ToolStripMenuItem.Text = "Skin 3";
+            skin3ToolStripMenuItem.Click += skin3ToolStripMenuItem_Click;
             // 
             // player_2
             // 
-            player_2.Location = new Point(144, 265);
+            player_2.Location = new Point(172, 265);
             player_2.Name = "player_2";
-            player_2.Size = new Size(126, 231);
+            player_2.Size = new Size(154, 231);
             player_2.TabIndex = 6;
             player_2.TabStop = false;
             // 
             // player_3
             // 
-            player_3.Location = new Point(276, 265);
+            player_3.Location = new Point(332, 264);
             player_3.Name = "player_3";
-            player_3.Size = new Size(126, 231);
+            player_3.Size = new Size(154, 231);
             player_3.TabIndex = 7;
             player_3.TabStop = false;
+            player_3.Click += player_3_Click;
             // 
             // player_4
             // 
-            player_4.Location = new Point(408, 265);
+            player_4.Location = new Point(492, 265);
             player_4.Name = "player_4";
-            player_4.Size = new Size(126, 231);
+            player_4.Size = new Size(154, 231);
             player_4.TabIndex = 8;
             player_4.TabStop = false;
             // 
             // player_5
             // 
-            player_5.Location = new Point(540, 265);
+            player_5.Location = new Point(652, 264);
             player_5.Name = "player_5";
-            player_5.Size = new Size(126, 231);
+            player_5.Size = new Size(154, 231);
             player_5.TabIndex = 9;
             player_5.TabStop = false;
             // 
             // player_6
             // 
-            player_6.Location = new Point(672, 265);
+            player_6.Location = new Point(812, 263);
             player_6.Name = "player_6";
-            player_6.Size = new Size(126, 231);
+            player_6.Size = new Size(154, 231);
             player_6.TabIndex = 10;
             player_6.TabStop = false;
             // 
             // dealer_2
             // 
-            dealer_2.Location = new Point(144, 27);
+            dealer_2.Location = new Point(172, 27);
             dealer_2.Name = "dealer_2";
-            dealer_2.Size = new Size(126, 231);
+            dealer_2.Size = new Size(154, 231);
             dealer_2.TabIndex = 11;
             dealer_2.TabStop = false;
             // 
             // dealer_3
             // 
-            dealer_3.Location = new Point(276, 28);
+            dealer_3.Location = new Point(332, 27);
             dealer_3.Name = "dealer_3";
-            dealer_3.Size = new Size(126, 231);
+            dealer_3.Size = new Size(154, 231);
             dealer_3.TabIndex = 12;
             dealer_3.TabStop = false;
             // 
             // dealer_4
             // 
-            dealer_4.Location = new Point(408, 27);
+            dealer_4.Location = new Point(492, 27);
             dealer_4.Name = "dealer_4";
-            dealer_4.Size = new Size(126, 231);
+            dealer_4.Size = new Size(154, 231);
             dealer_4.TabIndex = 13;
             dealer_4.TabStop = false;
             // 
             // dealer_5
             // 
-            dealer_5.Location = new Point(540, 27);
+            dealer_5.Location = new Point(652, 26);
             dealer_5.Name = "dealer_5";
-            dealer_5.Size = new Size(126, 231);
+            dealer_5.Size = new Size(154, 231);
             dealer_5.TabIndex = 14;
             dealer_5.TabStop = false;
             // 
             // dealer_6
             // 
-            dealer_6.Location = new Point(672, 28);
+            dealer_6.Location = new Point(812, 26);
             dealer_6.Name = "dealer_6";
-            dealer_6.Size = new Size(126, 231);
+            dealer_6.Size = new Size(154, 231);
             dealer_6.TabIndex = 15;
             dealer_6.TabStop = false;
             // 
@@ -287,7 +280,7 @@ namespace Black_Jack
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1061, 537);
+            ClientSize = new Size(983, 537);
             Controls.Add(score);
             Controls.Add(dealer_6);
             Controls.Add(dealer_5);
@@ -299,7 +292,6 @@ namespace Black_Jack
             Controls.Add(player_4);
             Controls.Add(player_3);
             Controls.Add(player_2);
-            Controls.Add(card_stack);
             Controls.Add(player_1);
             Controls.Add(dealer_1);
             Controls.Add(Stand_Button);
@@ -310,7 +302,6 @@ namespace Black_Jack
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dealer_1).EndInit();
             ((System.ComponentModel.ISupportInitialize)player_1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)card_stack).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)player_2).EndInit();
@@ -333,7 +324,6 @@ namespace Black_Jack
         private Button Stand_Button;
         private PictureBox dealer_1;
         private PictureBox player_1;
-        private PictureBox card_stack;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem graToolStripMenuItem;
         private ToolStripMenuItem starrtResetToolStripMenuItem;
