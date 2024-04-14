@@ -90,6 +90,8 @@ namespace Black_Jack
             this.Stand_Button.Enabled = true;
             this.Hit_Button.Enabled = true;
 
+            this.koniec_gry = false;
+
             this.karty_dealera.Clear();
             this.karty_playera.Clear();
             this.talia.Clear();
