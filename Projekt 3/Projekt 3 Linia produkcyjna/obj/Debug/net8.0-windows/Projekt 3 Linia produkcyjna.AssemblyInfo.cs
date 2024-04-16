@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Projekt 3 Linia produkcyjna")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f483d97c014a86ca45ccf59c516707c67b8d426")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e52759455f3e81ce13cadfbdd79e33c5c6fec23")]
 [assembly: System.Reflection.AssemblyProductAttribute("Projekt 3 Linia produkcyjna")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Projekt 3 Linia produkcyjna")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
