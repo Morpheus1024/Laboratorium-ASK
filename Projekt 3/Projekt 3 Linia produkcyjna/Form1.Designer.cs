@@ -10,6 +10,7 @@
             public bool zajety;
             public bool kolor;
             public bool pomalowany;
+            public short ID;
             public Wieszak()
             {
                 zajety = false;
@@ -24,11 +25,11 @@
             public short ilosc_wieszakow;
             public LinkedList<Wieszak> wieszaki_w_buforze;
 
-            public void dodaj_wieszak()
+            public void dodaj_wieszak(Wieszak wieszak_z_zawieszania)
             {
                 if (ilosc_wieszakow < max_pojemnosc)
                 {
-                    wieszaki_w_buforze.AddLast(new Wieszak());
+                    wieszaki_w_buforze.AddLast(wieszak_z_zawieszania);
                     ilosc_wieszakow++;
                 }
             }
@@ -94,7 +95,24 @@
             public Stack<Wieszak> malowany_wieszak; //stosa na jeden wieszak
         }
 
-        
+        short max_ilosc_wieszakow = 20;
+        short aktualna_ilosc_wieszakow;
+        Bufor bufor_przed_malowaniem = new Bufor();
+        Bufor bufor_przed_zawieszaniem = new Bufor();
+        Opoznienie_transportowe malowanie = new Opoznienie_transportowe();
+        Opoznienie_transportowe zdejmowanie = new Opoznienie_transportowe();
+        Opoznienie_transportowe zawieszanie = new Opoznienie_transportowe();
+        Piec_i_chlodnia piec_i_chlodnia = new Piec_i_chlodnia();
+        short predkosc_symulacji = 1;
+
+        short czas_do_potwierdzenia_obecnosci = 30;
+
+        short tick_zawieszanie = 0;
+        short tick_malowanie = 0;
+
+
+
+
 
 
         private System.ComponentModel.IContainer components = null;
@@ -140,6 +158,7 @@
             pauseToolStripMenuItem = new ToolStripMenuItem();
             prędkość2xToolStripMenuItem = new ToolStripMenuItem();
             prędkość4xToolStripMenuItem = new ToolStripMenuItem();
+            symulacja10xToolStripMenuItem = new ToolStripMenuItem();
             zakończToolStripMenuItem = new ToolStripMenuItem();
             malowanie_bar = new ProgressBar();
             timer_malowanie = new System.Windows.Forms.Timer(components);
@@ -158,6 +177,7 @@
             bufor_przed_zawieszaniem_bar = new ProgressBar();
             piec_bar = new ProgressBar();
             chlodnia_bar = new ProgressBar();
+            label_console = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -306,7 +326,7 @@
             // 
             // oknoZKomunikatamiToolStripMenuItem
             // 
-            oknoZKomunikatamiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { startToolStripMenuItem, pauseToolStripMenuItem, prędkość2xToolStripMenuItem, prędkość4xToolStripMenuItem, zakończToolStripMenuItem });
+            oknoZKomunikatamiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { startToolStripMenuItem, pauseToolStripMenuItem, prędkość2xToolStripMenuItem, prędkość4xToolStripMenuItem, symulacja10xToolStripMenuItem, zakończToolStripMenuItem });
             oknoZKomunikatamiToolStripMenuItem.Name = "oknoZKomunikatamiToolStripMenuItem";
             oknoZKomunikatamiToolStripMenuItem.Size = new Size(73, 20);
             oknoZKomunikatamiToolStripMenuItem.Text = "Symulacja";
@@ -315,31 +335,41 @@
             // startToolStripMenuItem
             // 
             startToolStripMenuItem.Name = "startToolStripMenuItem";
-            startToolStripMenuItem.Size = new Size(137, 22);
+            startToolStripMenuItem.Size = new Size(149, 22);
             startToolStripMenuItem.Text = "Start";
+            startToolStripMenuItem.Click += startToolStripMenuItem_Click;
             // 
             // pauseToolStripMenuItem
             // 
             pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            pauseToolStripMenuItem.Size = new Size(137, 22);
+            pauseToolStripMenuItem.Size = new Size(149, 22);
             pauseToolStripMenuItem.Text = "Pause";
             // 
             // prędkość2xToolStripMenuItem
             // 
             prędkość2xToolStripMenuItem.Name = "prędkość2xToolStripMenuItem";
-            prędkość2xToolStripMenuItem.Size = new Size(137, 22);
+            prędkość2xToolStripMenuItem.Size = new Size(149, 22);
             prędkość2xToolStripMenuItem.Text = "Prędkość 2x";
+            prędkość2xToolStripMenuItem.Click += prędkość2xToolStripMenuItem_Click;
             // 
             // prędkość4xToolStripMenuItem
             // 
             prędkość4xToolStripMenuItem.Name = "prędkość4xToolStripMenuItem";
-            prędkość4xToolStripMenuItem.Size = new Size(137, 22);
+            prędkość4xToolStripMenuItem.Size = new Size(149, 22);
             prędkość4xToolStripMenuItem.Text = "Prędkość 4x";
+            prędkość4xToolStripMenuItem.Click += prędkość4xToolStripMenuItem_Click;
+            // 
+            // symulacja10xToolStripMenuItem
+            // 
+            symulacja10xToolStripMenuItem.Name = "symulacja10xToolStripMenuItem";
+            symulacja10xToolStripMenuItem.Size = new Size(149, 22);
+            symulacja10xToolStripMenuItem.Text = "Symulacja 10x";
+            symulacja10xToolStripMenuItem.Click += symulacja10xToolStripMenuItem_Click;
             // 
             // zakończToolStripMenuItem
             // 
             zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            zakończToolStripMenuItem.Size = new Size(137, 22);
+            zakończToolStripMenuItem.Size = new Size(149, 22);
             zakończToolStripMenuItem.Text = "Zakończ";
             // 
             // malowanie_bar
@@ -351,14 +381,22 @@
             // 
             // timer_malowanie
             // 
-            timer_malowanie.Tick += timer1_Tick;
+            timer_malowanie.Interval = 1000;
+            timer_malowanie.Tick += timer_malowanie_Tick;
             // 
             // zawieszanie_bar
             // 
             zawieszanie_bar.Location = new Point(778, 424);
+            zawieszanie_bar.Maximum = 7;
             zawieszanie_bar.Name = "zawieszanie_bar";
             zawieszanie_bar.Size = new Size(238, 23);
+            zawieszanie_bar.Step = 1;
             zawieszanie_bar.TabIndex = 19;
+            // 
+            // timer_zawieszanie
+            // 
+            timer_zawieszanie.Interval = 1000;
+            timer_zawieszanie.Tick += timer_zawieszanie_Tick;
             // 
             // zdejmowanie_bar
             // 
@@ -405,6 +443,11 @@
             button2.Text = "Potwierdź obecność";
             button2.UseVisualStyleBackColor = true;
             // 
+            // timer_obecność
+            // 
+            timer_obecność.Interval = 1000;
+            timer_obecność.Tick += timer_obecność_Tick;
+            // 
             // czas_obecnosc_label
             // 
             czas_obecnosc_label.AutoSize = true;
@@ -429,8 +472,10 @@
             // bufor_przed_malowaniem_bar
             // 
             bufor_przed_malowaniem_bar.Location = new Point(774, 239);
+            bufor_przed_malowaniem_bar.Maximum = 15;
             bufor_przed_malowaniem_bar.Name = "bufor_przed_malowaniem_bar";
             bufor_przed_malowaniem_bar.Size = new Size(238, 23);
+            bufor_przed_malowaniem_bar.Step = 1;
             bufor_przed_malowaniem_bar.TabIndex = 27;
             // 
             // bufor_przed_zawieszaniem_bar
@@ -454,11 +499,22 @@
             chlodnia_bar.Size = new Size(238, 25);
             chlodnia_bar.TabIndex = 30;
             // 
+            // label_console
+            // 
+            label_console.AutoSize = true;
+            label_console.Font = new Font("Segoe UI", 25F);
+            label_console.Location = new Point(370, 493);
+            label_console.Name = "label_console";
+            label_console.Size = new Size(220, 46);
+            label_console.TabIndex = 31;
+            label_console.Text = "label_console";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1107, 570);
+            Controls.Add(label_console);
             Controls.Add(chlodnia_bar);
             Controls.Add(piec_bar);
             Controls.Add(bufor_przed_zawieszaniem_bar);
@@ -534,5 +590,7 @@
         private ProgressBar bufor_przed_zawieszaniem_bar;
         private ProgressBar piec_bar;
         private ProgressBar chlodnia_bar;
+        private ToolStripMenuItem symulacja10xToolStripMenuItem;
+        private Label label_console;
     }
 }
