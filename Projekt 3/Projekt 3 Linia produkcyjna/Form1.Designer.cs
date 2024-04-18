@@ -23,13 +23,13 @@
         {
             public short max_pojemnosc;
             public short ilosc_wieszakow;
-            public LinkedList<Wieszak> wieszaki_w_buforze;
+            public LinkedList<Wieszak> wieszaki_w_buforze = new LinkedList<Wieszak>();
 
-            public void dodaj_wieszak(Wieszak wieszak_z_zawieszania)
+            public void dodaj_wieszak_do_bufora(Wieszak wieszak_z_zawieszania)
             {
                 if (ilosc_wieszakow < max_pojemnosc)
                 {
-                    wieszaki_w_buforze.AddLast(wieszak_z_zawieszania);
+                    wieszaki_w_buforze.AddFirst(wieszak_z_zawieszania);
                     ilosc_wieszakow++;
                 }
             }
@@ -38,8 +38,8 @@
             {
                 if (ilosc_wieszakow > 0)
                 {
-                   ilosc_wieszakow--;
-                    malowanie.malowany_wieszak.Push(wieszaki_w_buforze.Last.Value);
+                    ilosc_wieszakow--;
+                    malowanie.stos.Push(wieszaki_w_buforze.Last());
                     wieszaki_w_buforze.RemoveLast();
 
                 }
@@ -50,7 +50,7 @@
                 if (ilosc_wieszakow > 0)
                 {
                     ilosc_wieszakow--;
-                    zawieszanie.malowany_wieszak.Push(wieszaki_w_buforze.Last.Value);
+                    zawieszanie.stos.Push(wieszaki_w_buforze.Last.Value);
                     wieszaki_w_buforze.RemoveLast();
                 }
             }
@@ -58,21 +58,24 @@
 
         class Piec_i_chlodnia
         {
-            public short temperatura_piec;
-            LinkedList<Wieszak> wieszaki_w_piecu;
-            public short max_pojemnosc_pieca;
-            public short ilosc_wieszakow_pieca;
+            public short temperatura_piec=20;
+            public short max_temperatura_piec = 200;
+            public bool piec_nagrzany = false;
+            LinkedList<Wieszak> wieszaki_w_piecu = new LinkedList<Wieszak>();
+            public short max_pojemnosc_pieca = 10;
+            public short ilosc_wieszakow_pieca=0;
 
-            LinkedList<Wieszak> wieszaki_w_chlodni;
-            public short max_pojemnosc_chlodni;
-            public short ilosc_wieszakow_chlodni;
+            public short temperatura_chlodnia = 20;
+            LinkedList<Wieszak> wieszaki_w_chlodni = new LinkedList<Wieszak>();
+            public short max_pojemnosc_chlodni = 11;
+            public short ilosc_wieszakow_chlodni =0;
 
             public void oddaj_wieszak_do_zdejmowania(Opoznienie_transportowe zdejmowanie)
             {
                 if (ilosc_wieszakow_chlodni > 0)
                 {
                     ilosc_wieszakow_chlodni--;
-                    zdejmowanie.malowany_wieszak.Push(wieszaki_w_chlodni.Last.Value);
+                    zdejmowanie.stos.Push(wieszaki_w_chlodni.Last.Value);
                     wieszaki_w_chlodni.RemoveLast();
                 }
             }
@@ -92,7 +95,8 @@
 
         class  Opoznienie_transportowe
         {
-            public Stack<Wieszak> malowany_wieszak; //stosa na jeden wieszak
+            public Stack<Wieszak> stos = new Stack<Wieszak>();//stosa na jeden wieszak
+
         }
 
         short max_ilosc_wieszakow = 20;
@@ -106,9 +110,12 @@
         short predkosc_symulacji = 1;
 
         short czas_do_potwierdzenia_obecnosci = 30;
+        bool obecnosc = true;
 
         short tick_zawieszanie = 0;
         short tick_malowanie = 0;
+
+        Stack<Wieszak> stos_wieszakow = new Stack<Wieszak>();
 
 
 
@@ -169,7 +176,7 @@
             chlodnia_temeratura_label = new Label();
             label3 = new Label();
             button1 = new Button();
-            button2 = new Button();
+            obecnosc_button = new Button();
             timer_obecność = new System.Windows.Forms.Timer(components);
             czas_obecnosc_label = new Label();
             label17 = new Label();
@@ -178,6 +185,7 @@
             piec_bar = new ProgressBar();
             chlodnia_bar = new ProgressBar();
             label_console = new Label();
+            timer_piec = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -434,14 +442,16 @@
             button1.Text = "Panel awarii";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // obecnosc_button
             // 
-            button2.Location = new Point(889, 509);
-            button2.Name = "button2";
-            button2.Size = new Size(206, 49);
-            button2.TabIndex = 24;
-            button2.Text = "Potwierdź obecność";
-            button2.UseVisualStyleBackColor = true;
+            obecnosc_button.BackColor = Color.Green;
+            obecnosc_button.Location = new Point(889, 509);
+            obecnosc_button.Name = "obecnosc_button";
+            obecnosc_button.Size = new Size(206, 49);
+            obecnosc_button.TabIndex = 24;
+            obecnosc_button.Text = "Potwierdź obecność";
+            obecnosc_button.UseVisualStyleBackColor = false;
+            obecnosc_button.Click += button2_Click;
             // 
             // timer_obecność
             // 
@@ -509,6 +519,11 @@
             label_console.TabIndex = 31;
             label_console.Text = "label_console";
             // 
+            // timer_piec
+            // 
+            timer_piec.Interval = 1000;
+            timer_piec.Tick += timer_piec_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -521,7 +536,7 @@
             Controls.Add(bufor_przed_malowaniem_bar);
             Controls.Add(label17);
             Controls.Add(czas_obecnosc_label);
-            Controls.Add(button2);
+            Controls.Add(obecnosc_button);
             Controls.Add(button1);
             Controls.Add(chlodnia_temeratura_label);
             Controls.Add(label3);
@@ -582,7 +597,7 @@
         private ToolStripMenuItem prędkość4xToolStripMenuItem;
         private ToolStripMenuItem zakończToolStripMenuItem;
         private Button button1;
-        private Button button2;
+        private Button obecnosc_button;
         private System.Windows.Forms.Timer timer_obecność;
         private Label czas_obecnosc_label;
         private Label label17;
@@ -592,5 +607,6 @@
         private ProgressBar chlodnia_bar;
         private ToolStripMenuItem symulacja10xToolStripMenuItem;
         private Label label_console;
+        private System.Windows.Forms.Timer timer_piec;
     }
 }
