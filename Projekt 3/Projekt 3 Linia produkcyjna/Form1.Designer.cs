@@ -66,6 +66,7 @@
             public short ilosc_wieszakow_pieca=0;
 
             public short temperatura_chlodnia = 20;
+            public short max_temperatura_chlodnia = 60;
             LinkedList<Wieszak> wieszaki_w_chlodni = new LinkedList<Wieszak>();
             public short max_pojemnosc_chlodni = 11;
             public short ilosc_wieszakow_chlodni =0;
@@ -85,11 +86,19 @@
                 if (ilosc_wieszakow_pieca > 0)
                 {
                     ilosc_wieszakow_pieca--;
-                    wieszaki_w_chlodni.AddLast(wieszaki_w_piecu.Last.Value);
+                    wieszaki_w_chlodni.AddFirst(wieszaki_w_piecu.Last.Value);
                     wieszaki_w_piecu.RemoveLast();
                     ilosc_wieszakow_chlodni++;
+                    temperatura_chlodnia += 30;
                 }
-            }   
+            }
+
+            public void dodaj_wieszak_do_pieca(Wieszak wiesza_pomalowany)
+            {
+                wieszaki_w_piecu.AddFirst(wiesza_pomalowany);
+                ilosc_wieszakow_pieca++;
+
+            }
         }
 
 
@@ -114,6 +123,9 @@
 
         short tick_zawieszanie = 0;
         short tick_malowanie = 0;
+        short tick_piec = 0;
+        short tick_chlodnia = 0;
+        short tick_zdejmowanie = 0;
 
         Stack<Wieszak> stos_wieszakow = new Stack<Wieszak>();
 
@@ -186,6 +198,7 @@
             chlodnia_bar = new ProgressBar();
             label_console = new Label();
             timer_piec = new System.Windows.Forms.Timer(components);
+            timer_chlodnia = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -413,6 +426,10 @@
             zdejmowanie_bar.Size = new Size(238, 23);
             zdejmowanie_bar.TabIndex = 20;
             // 
+            // timer_zdejmowanie
+            // 
+            timer_zdejmowanie.Tick += timer_zdejmowanie_Tick;
+            // 
             // chlodnia_temeratura_label
             // 
             chlodnia_temeratura_label.AutoSize = true;
@@ -505,8 +522,10 @@
             // chlodnia_bar
             // 
             chlodnia_bar.Location = new Point(58, 317);
+            chlodnia_bar.Maximum = 12;
             chlodnia_bar.Name = "chlodnia_bar";
             chlodnia_bar.Size = new Size(238, 25);
+            chlodnia_bar.Step = 1;
             chlodnia_bar.TabIndex = 30;
             // 
             // label_console
@@ -523,6 +542,11 @@
             // 
             timer_piec.Interval = 1000;
             timer_piec.Tick += timer_piec_Tick;
+            // 
+            // timer_chlodnia
+            // 
+            timer_chlodnia.Interval = 1000;
+            timer_chlodnia.Tick += timer_chlodnia_Tick;
             // 
             // Form1
             // 
@@ -608,5 +632,6 @@
         private ToolStripMenuItem symulacja10xToolStripMenuItem;
         private Label label_console;
         private System.Windows.Forms.Timer timer_piec;
+        private System.Windows.Forms.Timer timer_chlodnia;
     }
 }
