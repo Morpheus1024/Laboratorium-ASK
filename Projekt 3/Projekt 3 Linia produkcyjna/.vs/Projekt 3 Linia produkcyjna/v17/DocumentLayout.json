@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|d:\\github repository\\laboratorium-ask\\projekt 3\\projekt 3 linia produkcyjna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C574BE3C-AF40-4609-AEDD-CBDD66183FA9}|Projekt 3 Linia produkcyjna.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,32 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAywIAAAABHAAAA",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAIwFMBAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T04:10:56.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\Form1.Designer.cs",
-              "RelativeToolTip": "Form1.Designer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T04:22:21.659Z",
               "EditorCaption": ""
             },
             {
@@ -64,20 +47,18 @@
               "RelativeToolTip": "Form2.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T18:30:11.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-16T18:30:11.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Form2.cs [Projekt]",
               "DocumentMoniker": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\Form2.cs",
               "RelativeDocumentMoniker": "Form2.cs",
               "ToolTip": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 3\\Projekt 3 Linia produkcyjna\\Form2.cs [Projekt]",
               "RelativeToolTip": "Form2.cs [Projekt]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T18:29:36.626Z",
-              "EditorCaption": " [Projekt]"
+              "WhenOpened": "2024-04-16T18:29:36.626Z"
             }
           ]
         }
