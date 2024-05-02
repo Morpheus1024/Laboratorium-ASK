@@ -1,0 +1,14 @@
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\bin\Debug\ask2.exe.config
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\bin\Debug\ask2.exe
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\bin\Debug\ask2.pdb
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.csproj.AssemblyReference.cache
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form1.resources
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Properties.Resources.resources
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.csproj.GenerateResource.cache
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.csproj.CoreCompileInputs.cache
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.exe
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.pdb
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form2.resources
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form3.resources
+C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form4.resources
