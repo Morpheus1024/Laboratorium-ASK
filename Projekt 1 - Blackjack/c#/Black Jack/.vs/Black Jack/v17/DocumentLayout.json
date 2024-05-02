@@ -22,8 +22,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,7 +36,7 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 1 - Blackjack\\c#\\Black Jack\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAD0BAAAAAAAAAAAjwE4BAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4BAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-02T09:11:39.828Z",
               "EditorCaption": ""
@@ -47,8 +51,7 @@
               "RelativeToolTip": "Form1.Designer.cs",
               "ViewState": "AQIAAK0AAAAAAAAAAADwv8MAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T09:34:27.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T09:34:27.112Z"
             },
             {
               "$type": "Document",
@@ -59,8 +62,7 @@
               "ToolTip": "D:\\GitHub Repository\\Laboratorium-ASK\\Projekt 1 - Blackjack\\c#\\Black Jack\\Form1.cs [Projekt]",
               "RelativeToolTip": "Form1.cs [Projekt]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T08:54:22.384Z",
-              "EditorCaption": " [Projekt]"
+              "WhenOpened": "2024-04-02T08:54:22.384Z"
             }
           ]
         }

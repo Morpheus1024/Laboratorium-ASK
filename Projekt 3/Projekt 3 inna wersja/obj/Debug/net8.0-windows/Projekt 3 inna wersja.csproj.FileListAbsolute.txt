@@ -1,0 +1,28 @@
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\Projekt 3 inna wersja.exe
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\Projekt 3 inna wersja.deps.json
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\Projekt 3 inna wersja.runtimeconfig.json
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\Projekt 3 inna wersja.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\Projekt 3 inna wersja.pdb
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt_3_inna_wersja.Form1.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.csproj.GenerateResource.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.AssemblyInfoInputs.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.AssemblyInfo.cs
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.csproj.CoreCompileInputs.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.sourcelink.json
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\refint\Projekt 3 inna wersja.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.pdb
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.genruntimeconfig.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\ref\Projekt 3 inna wersja.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.csproj.AssemblyReference.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Interop.SystemMonitor.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt 3 inna wersja.csproj.ResolveComReference.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\System.Management.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\System.Configuration.Install.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\Microsoft.JScript.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\pl\System.Management.resources.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\pl\System.Configuration.Install.resources.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\pl\Microsoft.JScript.resources.dll
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\obj\Debug\net8.0-windows\Projekt .7C1B19AA.Up2Date
+D:\GitHub Repository\Laboratorium-ASK\Projekt 3\Projekt 3 inna wersja\bin\Debug\net8.0-windows\OpenHardwareMonitorLib.dll

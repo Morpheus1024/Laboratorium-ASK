@@ -12,3 +12,16 @@ C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.pdb
 C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form2.resources
 C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form3.resources
 C:\Users\Mateusz\Desktop\l1\ask2\ask2\obj\Debug\ask2.Form4.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\bin\Debug\ask2.exe.config
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\bin\Debug\ask2.exe
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\bin\Debug\ask2.pdb
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.csproj.AssemblyReference.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.Form1.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.Form2.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.Form3.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.Form4.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.Properties.Resources.resources
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.csproj.GenerateResource.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.csproj.CoreCompileInputs.cache
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.exe
+D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\obj\Debug\ask2.pdb

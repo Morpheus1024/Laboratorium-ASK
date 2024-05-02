@@ -33,7 +33,7 @@ namespace ask2
         private void timer1_Tick(object sender, EventArgs e)
         {
             // Ścieżka do pliku dźwiękowego
-            string sciezkaDoDzwieku = @"C:\Users\Mateusz\Desktop\l1\ask2\ask2\bin\Debug\sound.wav";
+            string sciezkaDoDzwieku = @"D:\GitHub Repository\Laboratorium-ASK\Projekt 2\ask2v3\ask2\bin\Debug";
 
             // Tworzenie obiektu SoundPlayer z podaną ścieżką dźwiękową
             SoundPlayer player = new SoundPlayer(sciezkaDoDzwieku);
