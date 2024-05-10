@@ -1,0 +1,109 @@
+import tkinter as tk
+import threading
+
+# Inicjalizacja rejestrów
+AL = ['0'] * 8
+AH = ['0'] * 8
+BL = ['0'] * 8
+BH = ['0'] * 8
+CL = ['0'] * 8
+CH = ['0'] * 8
+DL = ['0'] * 8
+DH = ['0'] * 8
+
+
+# Funkcje pomocnicze
+def dec_to_bin(number):
+    return bin(number)[2:].zfill(8)
+
+
+def split_bits(binary_number):
+    return [bit for bit in binary_number]
+
+
+def execute_assembly_code():
+    global AL, AH, BL, BH, CL, CH, DL, DH
+
+    registers = {'AL': AL, 'AH': AH, 'BL': BL, 'BH': BH, 'CL': CL, 'CH': CH, 'DL': DL, 'DH': DH}
+    command_lines = input_entry.get("1.0", tk.END).split("\n")
+
+    for command in command_lines:
+        cmd = command.strip().split()
+        if cmd:
+            if cmd[0] == "MOV":
+                if cmd[2].isdigit():
+                    registers[cmd[1].replace(",", "")] = list(format(int(cmd[2]), '08b'))
+                else:
+                    registers[cmd[1].replace(",", "")] = registers[cmd[2].replace(",", "")][:]
+            elif cmd[0] == "ADD":
+                if cmd[2].isdigit():
+                    registers[cmd[1].replace(",", "")] = list(
+                        bin(int(''.join(registers[cmd[1].replace(",", "")]), 2) + int(cmd[2]))[2:])
+                else:
+                    registers[cmd[1].replace(",", "")] = list(
+                        bin(int(''.join(registers[cmd[1].replace(",", "")]), 2) + int(
+                            ''.join(registers[cmd[2].replace(",", "")]), 2)))[2:]
+            elif cmd[0] == "SUB":
+                if cmd[2].isdigit():
+                    registers[cmd[1].replace(",", "")] = list(
+                        bin(int(''.join(registers[cmd[1].replace(",", "")]), 2) - int(cmd[2]))[2:])
+                else:
+                    result = int(''.join(registers[cmd[1].replace(",", "")]), 2) - int(
+                        ''.join(registers[cmd[2].replace(",", "")]), 2)
+                    if result < 0:
+                        result += 256  # Obsługa odejmowania modulo 256 dla wartości ujemnych
+                    registers[cmd[1].replace(",", "")] = list(bin(result)[2:])
+
+    for reg_name, reg_value in registers.items():
+        register_texts[reg_name].delete(1.0, tk.END)
+        register_texts[reg_name].insert(tk.END, ''.join(reg_value))
+
+
+# Utworzenie okna głównego
+root = tk.Tk()
+root.title("Assembler Simulator")
+
+# Utworzenie ramki dla pola tekstowego
+code_frame = tk.Frame(root)
+code_frame.pack(side=tk.TOP, padx=10, pady=10)
+
+code_label = tk.Label(code_frame, text="Wpisz kod:")
+code_label.pack()
+
+input_entry = tk.Text(code_frame, width=60, height=10)
+input_entry.pack()
+
+# Utworzenie ramki dla rejestrow
+register_frame = tk.Frame(root)
+register_frame.pack(side=tk.TOP, padx=10, pady=10)
+
+register_label = tk.Label(register_frame, text="Rejestry:")
+register_label.pack()
+
+registers = {'AL': AL, 'AH': AH, 'BL': BL, 'BH': BH, 'CL': CL, 'CH': CH, 'DL': DL, 'DH': DH}
+register_texts = {}
+
+for reg_name, reg_value in registers.items():
+    reg_frame = tk.Frame(register_frame)
+    reg_frame.pack(fill=tk.X)
+
+    reg_label = tk.Label(reg_frame, text=reg_name)
+    reg_label.pack(side=tk.LEFT)
+
+    reg_value_text = tk.Text(reg_frame, width=10, height=1, bg="#f0f0f0", bd=0)
+    reg_value_text.insert(tk.END, ''.join(reg_value))
+    reg_value_text.pack(side=tk.RIGHT)
+
+    register_texts[reg_name] = reg_value_text
+
+
+# Funkcja wykonująca kod
+def execute_code():
+    threading.Thread(target=execute_assembly_code).start()
+
+
+# Przyciski
+execute_button = tk.Button(root, text="Wykonaj kod", command=execute_code)
+execute_button.pack()
+
+root.mainloop()
