@@ -1,0 +1,55 @@
+#This is where the fun begins.
+AL = ['0'] * 8
+AH = ['0'] * 8
+BL = ['0'] * 8
+BH = ['0'] * 8
+CL = ['0'] * 8
+CH = ['0'] * 8
+DL = ['0'] * 8
+DH = ['0'] * 8
+def dec_to_bin(number):
+    return bin(number)[2:]
+def split_bits(binary_number):
+    return [bit for bit in binary_number]
+
+print(split_bits(dec_to_bin(5)))
+
+def execute_assembly_code():
+    registers = {'AL': AL, 'AH': AH, 'BL': BL, 'BH': BH, 'CL': CL, 'CH': CH, 'DL': DL, 'DH': DH}
+
+    while True:
+        command = input("").strip().split()
+
+        if command[0] == "MOV":
+            if command[2].isdigit():
+                registers[command[1].replace(",", "")] = list(format(int(command[2]), '08b'))
+            else:
+                registers[command[1].replace(",", "")] = registers[command[2].replace(",", "")][:]
+
+        elif command[0] == "ADD":
+            if command[2].isdigit():
+                registers[command[1].replace(",", "")] = list(
+                    bin(int(''.join(registers[command[1].replace(",", "")]), 2) + int(command[2]))[2:])
+            else:
+                registers[command[1].replace(",", "")] = list(
+                    bin(int(''.join(registers[command[1].replace(",", "")]), 2) + int(
+                        ''.join(registers[command[2].replace(",", "")]), 2)))[2:]
+
+        elif command[0] == "SUB":
+            if command[2].isdigit():
+                registers[command[1].replace(",", "")] = list(
+                    bin(int(''.join(registers[command[1].replace(",", "")]), 2) - int(command[2]))[2:])
+            else:
+                result = int(''.join(registers[command[1].replace(",", "")]), 2) - int(
+                    ''.join(registers[command[2].replace(",", "")]), 2)
+                if result < 0:
+                    result += 256  # Obsługa odejmowania modulo 256 dla wartości ujemnych
+                registers[command[1].replace(",", "")] = list(bin(result)[2:])
+        elif command[0] == "END":
+            print("Rejestry po operacji:")
+            for reg_name, reg_value in registers.items():
+                print(f"{reg_name}: {reg_value}")
+            break
+
+
+execute_assembly_code()
