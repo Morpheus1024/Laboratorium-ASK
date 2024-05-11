@@ -1,17 +1,29 @@
 import tkinter as tk
 import threading
 from tkinter import filedialog
+AL= None
+AH= None
+BL= None
+BH= None
+CL= None
+CH= None
+DL= None
+DH= None 
+
+def zeruj_rejestry():
+    AL = ['0'] * 8
+    AH = ['0'] * 8
+    BL = ['0'] * 8
+    BH = ['0'] * 8
+    CL = ['0'] * 8
+    CH = ['0'] * 8
+    DL = ['0'] * 8
+    DH = ['0'] * 8
+
+    return AL, AH, BL, BH, CL, CH, DL, DH
 
 # Inicjalizacja rejestrów
-AL = ['0'] * 8
-AH = ['0'] * 8
-BL = ['0'] * 8
-BH = ['0'] * 8
-CL = ['0'] * 8
-CH = ['0'] * 8
-DL = ['0'] * 8
-DH = ['0'] * 8
-
+AL, AH, BL, BH, CL, CH, DL, DH = zeruj_rejestry()
 # Zdefiniowane zmienne
 variables = {}
 
@@ -33,6 +45,8 @@ def update_line_numbers():
 def on_enter_pressed(event):
     update_line_numbers()
 
+
+
 def execute_assembly_code(is_step):
     global AL, AH, BL, BH, CL, CH, DL, DH, current_line, variables
 
@@ -40,6 +54,7 @@ def execute_assembly_code(is_step):
     command_lines = input_entry.get("1.0", tk.END).split("\n")
 
     if is_step:
+        if current_line == 0: AL, AH, BL, BH, CL, CH, DL, DH = zeruj_rejestry()
         if current_line < len(command_lines):
             command = command_lines[current_line].strip()
             if command:
