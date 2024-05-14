@@ -45,6 +45,25 @@ def update_line_numbers():
 def on_enter_pressed(event):
     update_line_numbers()
 
+def fill_registers_with_zeros(AL, AH, BL, BH, CL, CH, DL, DH):
+    registers=[]
+    registers.append(AL)
+    registers.append(AH)
+    registers.append(BL)
+    registers.append(BH)
+    registers.append(CL)
+    registers.append(CH)
+    registers.append(DL)
+    registers.append(DH)
+
+    for register in registers:
+        if len(register)<8:
+            for i in range(8-len(register)):
+                register.insert(0, '0')
+        
+    
+
+
 
 
 def execute_assembly_code(is_step):
@@ -164,7 +183,14 @@ def execute_assembly_code(is_step):
         # Aktualizacja wartości rejestrów w interfejsie
         for reg_name, reg_value in registers.items():
             register_texts[reg_name].delete(1.0, tk.END)
+            if len(reg_value)<8:
+                for i in range(8-len(reg_value)):
+                    reg_value.insert(0, '0')
             register_texts[reg_name].insert(tk.END, ''.join(reg_value))
+
+
+        
+
 
 
 # Utworzenie okna głównego
