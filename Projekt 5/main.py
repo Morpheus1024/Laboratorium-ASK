@@ -1,16 +1,24 @@
 import tkinter as tk
 import threading
 from tkinter import filedialog
-AL= None
-AH= None
-BL= None
-BH= None
-CL= None
-CH= None
-DL= None
-DH= None 
+
+# Inicjalizacja rejestrów
+AL = ['0'] * 8
+AH = ['0'] * 8
+BL = ['0'] * 8
+BH = ['0'] * 8
+CL = ['0'] * 8
+CH = ['0'] * 8
+DL = ['0'] * 8
+DH = ['0'] * 8
+
+# Zdefiniowane zmienne
+variables = {}
+
+current_line = 0  # Zmienna przechowująca numer aktualnie wykonywanej linii
 
 def zeruj_rejestry():
+    global AL, AH, BL, BH, CL, CH, DL, DH
     AL = ['0'] * 8
     AH = ['0'] * 8
     BL = ['0'] * 8
@@ -19,15 +27,6 @@ def zeruj_rejestry():
     CH = ['0'] * 8
     DL = ['0'] * 8
     DH = ['0'] * 8
-
-    return AL, AH, BL, BH, CL, CH, DL, DH
-
-# Inicjalizacja rejestrów
-AL, AH, BL, BH, CL, CH, DL, DH = zeruj_rejestry()
-# Zdefiniowane zmienne
-variables = {}
-
-current_line = 0  # Zmienna przechowująca numer aktualnie wykonywanej linii
 
 # Funkcje pomocnicze
 def dec_to_bin(number):
@@ -45,27 +44,6 @@ def update_line_numbers():
 def on_enter_pressed(event):
     update_line_numbers()
 
-def fill_registers_with_zeros(AL, AH, BL, BH, CL, CH, DL, DH):
-    registers=[]
-    registers.append(AL)
-    registers.append(AH)
-    registers.append(BL)
-    registers.append(BH)
-    registers.append(CL)
-    registers.append(CH)
-    registers.append(DL)
-    registers.append(DH)
-
-    for register in registers:
-        if len(register)<8:
-            for i in range(8-len(register)):
-                register.insert(0, '0')
-        
-    
-
-
-
-
 def execute_assembly_code(is_step):
     global AL, AH, BL, BH, CL, CH, DL, DH, current_line, variables
 
@@ -73,7 +51,6 @@ def execute_assembly_code(is_step):
     command_lines = input_entry.get("1.0", tk.END).split("\n")
 
     if is_step:
-        if current_line == 0: AL, AH, BL, BH, CL, CH, DL, DH = zeruj_rejestry()
         if current_line < len(command_lines):
             command = command_lines[current_line].strip()
             if command:
@@ -128,10 +105,11 @@ def execute_assembly_code(is_step):
             # Aktualizacja wartości rejestrów w interfejsie
             for reg_name, reg_value in registers.items():
                 register_texts[reg_name].delete(1.0, tk.END)
-                register_texts[reg_name].insert(tk.END, ''.join(reg_value))
+                register_texts[reg_name].insert(tk.END, ''.join(reg_value).zfill(8))
 
     else:
         current_line = 0
+        zeruj_rejestry()
         variables = {}
         for command in command_lines:
             cmd = command.strip().split()
@@ -183,14 +161,7 @@ def execute_assembly_code(is_step):
         # Aktualizacja wartości rejestrów w interfejsie
         for reg_name, reg_value in registers.items():
             register_texts[reg_name].delete(1.0, tk.END)
-            if len(reg_value)<8:
-                for i in range(8-len(reg_value)):
-                    reg_value.insert(0, '0')
-            register_texts[reg_name].insert(tk.END, ''.join(reg_value))
-
-
-        
-
+            register_texts[reg_name].insert(tk.END, ''.join(reg_value).zfill(8))
 
 
 # Utworzenie okna głównego
